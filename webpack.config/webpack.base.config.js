@@ -1,11 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const plugins = [
   new HtmlWebpackPlugin({
     template: `src/html/index.pug`,
-  })
+  }),
+  new VueLoaderPlugin()
 ]
 
 module.exports = {
@@ -20,7 +22,10 @@ module.exports = {
     //
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.scss', '.sass'],
+    alias: {
+      'vue$': 'vue/dist/vue.common.js',
+    },
+    extensions: ['.vue', '.tsx', '.ts', '.js', '.scss', '.sass'],
   },
   plugins,
   module: {
@@ -28,29 +33,31 @@ module.exports = {
       {
         test: /\.pug$/,
         exclude: /node_modules/,
-        use: [
+        oneOf: [
+          // this applies to pug imports inside JavaScript
           {
-            loader: 'pug-loader',
-            options: {
-              pretty: true
-            }
+            exclude: /\.vue$/,
+            use: ['raw-loader', 'pug-plain-loader']
+          },
+          // this applies to <template lang="pug"> in Vue components
+          {
+            use: ['pug-plain-loader']
           }
         ]
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
+        test: /\.vue$/,
+        use: 'vue-loader'
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'awesome-typescript-loader'
-      },
-      {
-        test: /\.js$/,
-          exclude: /node_modules/,
-          use: 'eslint-loader',
+        use: [{
+          loader: 'awesome-typescript-loader',
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+          }
+        }]
       },
       {
         test: /\.(css|scss|sass)$/,
