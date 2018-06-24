@@ -1,0 +1,48 @@
+{
+  "name": "vue_typescript_scaffold",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --progress --open --config webpack.config/webpack.development.config.js",
+    "clean": "rm -rf ./build",
+    "lint": "prettier-eslint --write \"src/**/*.ts\"",
+    "build": "yarn run clean && yarn run lint && webpack --progress --hide-modules --config webpack.config/webpack.production.config.js"
+  },
+  "engines": {
+    "node": "^8.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RyotaHirano/ts-boilerplate.git"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.0",
+    "awesome-typescript-loader": "4.0.0-1",
+    "css-loader": "^0.28.4",
+    "css-mqpacker": "^5.0.1",
+    "eslint": "^4.1.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.9",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.0.4",
+    "image-webpack-loader": "^3.3.1",
+    "node-sass": "^4.5.3",
+    "postcss-flexbugs-fixes": "^2.1.0",
+    "postcss-loader": "^2.0.6",
+    "prettier-eslint": "^8.8.1",
+    "prettier-eslint-cli": "^4.7.1",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "typescript": "^2.7.2",
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.4",
+    "webpack-dev-server": "^3.0.0",
+    "webpack-merge": "^4.1.2"
+  }
+}
