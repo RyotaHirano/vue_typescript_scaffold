@@ -1,17 +1,19 @@
 {
   "extends": [
     "eslint:recommended",
-    "prettier"
+    "prettier",
+    "plugin:vue/recommended",
+    "typescript"
   ],
-  "parser": "babel-eslint",
-  "plugins": [
-    "babel",
-    "prettier"
-  ],
+  "parser": "vue-eslint-parser",
   "parserOptions": {
+    "parser": "typescript-eslint-parser",
     "ecmaVersion": 6,
     "sourceType": "module"
   },
+  "plugins": [
+    "prettier"
+  ],
   "env": {
     "es6": true,
     "browser": true,
@@ -21,13 +23,21 @@
     "prettier/prettier": [
       "error",
       {
-        "trailingComma": "none",
         "singleQuote": true,
+        "trailingComma": "none",
         "semi": false
       }
     ],
-    "no-unused-vars": "error",
-    "prefer-arrow-callback": "error",
-    "prefer-const": "error"
+    "no-var": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "prefer-const": "error",
+    "no-console": "warn",
+    "semi": "off"
   }
 }

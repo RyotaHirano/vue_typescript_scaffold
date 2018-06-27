@@ -1,16 +1,16 @@
-import Vue from "vue";
-import App from "./components/App.vue";
-import "../html/index.pug";
-import "../css/style.scss";
+import Vue from 'vue'
+import App from './components/App.vue'
+import '../html/index.pug'
+import '../css/style.scss'
 
-import myAlert from "./utils/myAlert";
+import myAlert from './utils/myAlert'
 
-document.addEventListener("DOMContentLoaded", () => myAlert("TypeScript"));
+document.addEventListener('DOMContentLoaded', () => myAlert('TypeScript'))
 
 new Vue({
-  el: "#app",
-  template: "<App/>",
+  el: '#app',
   components: {
     App
-  }
-});
+  },
+  template: '<App/>'
+})

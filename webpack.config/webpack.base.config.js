@@ -47,8 +47,10 @@ module.exports = {
         ]
       },
       {
-        test: /\.vue$/,
-        use: 'vue-loader'
+        enforce: 'pre',
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'eslint-loader'
       },
       {
         test: /\.tsx?$/,
@@ -59,6 +61,10 @@ module.exports = {
             appendTsSuffixTo: [/\.vue$/],
           }
         }]
+      },
+      {
+        test: /\.vue$/,
+        use: 'vue-loader'
       },
       {
         test: /\.(css|scss|sass)$/,

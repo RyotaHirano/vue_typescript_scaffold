@@ -4,8 +4,9 @@
   "scripts": {
     "start": "webpack-dev-server --progress --open --config webpack.config/webpack.development.config.js",
     "clean": "rm -rf ./build",
-    "lint": "prettier-eslint --write \"src/**/*.ts\"",
-    "build": "yarn run clean && yarn run lint && webpack --progress --hide-modules --config webpack.config/webpack.production.config.js"
+    "lint": "yarn eslint src/js --fix",
+    "build": "yarn run clean && webpack --progress --hide-modules --config webpack.config/webpack.production.config.js",
+    "precommit": "lint-staged"
   },
   "engines": {
     "node": "^8.4.0"
@@ -18,15 +19,19 @@
     "autoprefixer": "^6.7.0",
     "css-loader": "^0.28.4",
     "css-mqpacker": "^5.0.1",
-    "eslint": "^4.1.1",
+    "eslint": "^5.0.1",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-config-typescript": "^1.1.0",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-babel": "^4.1.1",
-    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-prettier": "^2.6.1",
+    "eslint-plugin-typescript": "^0.12.0",
+    "eslint-plugin-vue": "^4.5.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.9",
     "html-webpack-plugin": "^3.0.4",
+    "husky": "^0.14.3",
     "image-webpack-loader": "^3.3.1",
+    "lint-staged": "^7.2.0",
     "node-sass": "^4.5.3",
     "postcss-flexbugs-fixes": "^2.1.0",
     "postcss-loader": "^2.0.6",
@@ -37,9 +42,10 @@
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "ts-loader": "^4.4.1",
     "typescript": "^2.7.2",
+    "typescript-eslint-parser": "^16.0.1",
     "uglifyjs-webpack-plugin": "^1.2.2",
+    "vue-eslint-parser": "^2.0.3",
     "vue-loader": "^15.2.4",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.0.1",
@@ -49,5 +55,11 @@
   },
   "dependencies": {
     "vue": "^2.5.16"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
