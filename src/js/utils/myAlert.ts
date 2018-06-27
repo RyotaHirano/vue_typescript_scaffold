@@ -1,3 +1,3 @@
 export default function myAlert(str: string) {
-  return alert(`Hello ${str} !!!`)
+  return alert(`Hello ${str} !!!`);
 }

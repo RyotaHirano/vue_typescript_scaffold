@@ -1,6 +1,2 @@
-# ts-boilerplate
-frontend develop scaffold based on typescript & webpack.
-
-### tools
-- awesome-typescript-loader
-- prettier-eslint
+# vue typescript scaffold
+frontend develop scaffold based on vue(v2.X) & typescript(v2.X) & webpack(v4.X).

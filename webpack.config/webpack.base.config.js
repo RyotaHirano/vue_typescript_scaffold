@@ -24,6 +24,7 @@ module.exports = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.common.js',
+      'images': path.resolve(__dirname, './../src/images'),
     },
     extensions: ['.vue', '.tsx', '.ts', '.js', '.scss', '.sass'],
   },
@@ -37,7 +38,7 @@ module.exports = {
           // this applies to pug imports inside JavaScript
           {
             exclude: /\.vue$/,
-            use: ['raw-loader', 'pug-plain-loader']
+            use: ['pug-loader']
           },
           // this applies to <template lang="pug"> in Vue components
           {
@@ -53,7 +54,7 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [{
-          loader: 'awesome-typescript-loader',
+          loader: 'ts-loader',
           options: {
             appendTsSuffixTo: [/\.vue$/],
           }

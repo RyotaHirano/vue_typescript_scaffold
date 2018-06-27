@@ -4,6 +4,7 @@
     <div>
       {{test}}
     </div>
+    <img src="~images/common/sample.jpg" alt="" width="150">
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: 'app',
+
   data() {
     return {
       test: 'TEST'
